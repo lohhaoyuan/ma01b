@@ -1,0 +1,13 @@
+node_modules/
+.expo/
+.next/
+dist/
+
+# Secrets. .env.example files are committed; these are not.
+.env
+.env.local
+.env*.local
+
+*.tsbuildinfo
+.DS_Store
+*.log

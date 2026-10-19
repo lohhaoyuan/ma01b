@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* Dark mode is driven by a class on <html>, set by next-themes, rather than by
+   prefers-color-scheme alone — the patient can override the system setting. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "SF Pro Text", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", monospace;
+
+  --radius-lg: 0.625rem;
+}
+
+:root {
+  --surface: #fafafa; /* zinc-50 */
+  --card: #ffffff;
+  --border: #e4e4e7; /* zinc-200 */
+  --text: #18181b; /* zinc-900 */
+  --muted: #71717a; /* zinc-500 */
+  --accent: #db2777; /* pink-600 — clears AA on the light surface */
+  --accent-contrast: #ffffff;
+}
+
+.dark {
+  --surface: #09090b; /* zinc-950 */
+  --card: #18181b; /* zinc-900 */
+  --border: #27272a; /* zinc-800 */
+  --text: #fafafa;
+  --muted: #a1a1aa; /* zinc-400 — zinc-500 is too dim on graphite */
+  --accent: #ec4899; /* pink-500 */
+  --accent-contrast: #09090b;
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-line: var(--border);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+}
+
+body {
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Printed reports go to greyscale. Severity stays readable because the numeral
+   is always rendered next to the colour. */
+@media print {
+  :root {
+    --surface: #ffffff;
+    --card: #ffffff;
+    --border: #d4d4d8;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-plain {
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  a[href]::after {
+    content: "";
+  }
+}

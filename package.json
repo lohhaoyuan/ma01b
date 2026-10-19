@@ -1,0 +1,18 @@
+{
+  "name": "yochipls",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Endometriosis symptom management \u2014 patient app (Expo) and clinician web (Next.js)",
+  "type": "module",
+  "scripts": {
+    "sync:shared": "node scripts/sync-shared.mjs",
+    "sync:shared:check": "node scripts/sync-shared.mjs --check",
+    "test:schema": "node tests/schema.test.mjs",
+    "test:totp": "node tests/totp.test.ts",
+    "test": "npm run sync:shared:check && npm run test:schema && npm run test:totp"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.2.17",
+    "@noble/hashes": "2.3.0"
+  }
+}
